@@ -1,5 +1,6 @@
 /**
- * 水塘抽样(reservoir sampling): When grabbing the k th number, we generate a random number p, if p < 1 / k, we keep the kth number, or, we reserve the previous one.
+ * 水塘抽样(reservoir sampling): When grabbing the k th number, we generate a random number p, if p < 1 / k, we keep the kth number, 
+ * or we reserve the previous one.
  * 
  **/
 
