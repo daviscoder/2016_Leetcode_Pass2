@@ -1,7 +1,7 @@
 /**
  * 水塘抽样(reservoir sampling): When grabbing the k th number, we generate a random number p, if p < 1 / k, we keep the kth number, 
  * or we reserve the previous one.
- * 
+ * reference: http://blog.csdn.net/my_jobs/article/details/48372399
  **/
 
 class Solution {
