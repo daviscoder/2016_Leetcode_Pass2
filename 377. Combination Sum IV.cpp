@@ -1,3 +1,8 @@
+/**
+ * Apply DP to solve. DFS is not efficient enough.
+ * 每行长度为target + 1. 每添加一个row 新添加进来一个元素. 此题还需要再复习！
+ **/
+
 class Solution {
 public:
     int combinationSum4(vector<int>& nums, int target) {
