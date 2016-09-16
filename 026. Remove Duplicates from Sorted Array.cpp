@@ -1,4 +1,6 @@
-
+/**
+ * 注意边界条件.
+ */
 
 class Solution {
 public:
