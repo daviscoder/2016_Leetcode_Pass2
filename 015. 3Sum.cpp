@@ -1,3 +1,7 @@
+/**
+ * 去重问题：第一个数试过后再跳后面和他相同的
+ * 
+ */
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
