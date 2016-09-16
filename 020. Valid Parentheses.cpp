@@ -1,4 +1,7 @@
-
+/**
+ * 注意最后返回前检查stack是否为空栈.
+ * 
+ */
 
 class Solution {
 public:
