@@ -1,4 +1,8 @@
-
+/**
+ * isalnum(char c) 用来判断一个字符是不是字母或者数字!
+ * isalpha (c) 判断是不是字母
+ * isdigit (c) 判断是不是数字
+ */
 
 class Solution {
 public:
