@@ -1,4 +1,6 @@
-
+/**
+ * low 用来记录当前出现的最低价格...
+ */
 
 class Solution {
 public:
