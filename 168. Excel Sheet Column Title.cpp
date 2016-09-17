@@ -1,3 +1,6 @@
+/**
+ * 注意字母column是以1 为基准的...不是0...
+ */
 class Solution {
 public:
     string convertToTitle(int n) {
