@@ -1,6 +1,7 @@
 /**
  * 保存所有左子树的父节点即可.
  */
+
 class BSTIterator {
 public:
     stack<TreeNode *> s;
@@ -19,6 +20,7 @@ public:
     /** @return the next smallest number */
     int next() {
         TreeNode * p = s.top();
+        int res = p->val;
         s.pop();
         if (p->right) {
             p = p->right;
@@ -27,7 +29,7 @@ public:
                 p = p->left;
             }
         }
-        return p->val;
+        return res;
     }
 };
 
