@@ -1,3 +1,4 @@
+// 初始条件: res[0] = 1;
 
 class Solution {
 public:
