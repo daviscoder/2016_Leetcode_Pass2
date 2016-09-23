@@ -1,40 +1,31 @@
 /**
- * Definition for an interval.
- * struct Interval {
- *     int start;
- *     int end;
- *     Interval() : start(0), end(0) {}
- *     Interval(int s, int e) : start(s), end(e) {}
- * };
+ * O(n logn), O(1)
+ * 空向量，一门课，没overlap，夸2门课，跨3门课
  */
 class Solution {
 public:
     static bool myComparator (Interval& i, Interval& j) {
-        if (i.start < j.start)
-            return true;
-        else if (i.start == j.start)
-            return i.end < j.end;
-        else
-            return false;
+        return i.start <= j.start;
     }
-    
+
     int minMeetingRooms(vector<Interval>& intervals) {
         sort (intervals.begin(), intervals.end(), myComparator);
-        int cnt = 0;
+        if (intervals.size() == 0)
+            return 0;
+        int res = 0;
         while (intervals.size() > 0) {
-            cnt++;
-            int current = intervals[0].end, i = 0;
-            intervals.erase(intervals.begin());
-            while (i < intervals.size()) {
-                if (current > intervals[i].start) {
-                    i++;
+            int cur = INT_MIN;
+            res++;
+            for (int i = 0; i < intervals.size();) {
+                if (cur <= intervals[i].start) {
+                    cur = intervals[i].end;
+                    intervals.erase (intervals.begin() + i);
                 }
                 else {
-                    current = intervals[i].end;
-                    intervals.erase (intervals.begin() + i);
+                    i++;
                 }
             }
         }
-        return cnt;
+        return res;
     }
 };
