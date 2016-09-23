@@ -1,22 +1,23 @@
 /**
- * 使用inorder traversal的思想，保存前一个节点与当前节点value比较.
+ * O(n), O(1).
+ * Using inorder traversal and compare the current node with the previous visited node.
+ * empty tree. valid tree. Left subtree invalid, right subtree invalid.
  */
+
 class Solution {
 public:
-    bool inorder (TreeNode* root, TreeNode* &prev) {
-        if (root == NULL)
-            return true;
-        if (inorder (root->left, prev) == false)
+    TreeNode* previous = NULL;
+    bool helper (TreeNode* root) {
+        if (root == NULL) return true;
+        if (helper (root->left) == false)
             return false;
-        if (prev && prev->val >= root->val)
+        if (previous != NULL && root->val <= previous->val)
             return false;
-        prev = root;
-        return inorder (root->right, prev);
-        
+        previous = root;
+        return helper (root->right);
     }
 
     bool isValidBST(TreeNode* root) {
-        TreeNode * prev = NULL;
-        return inorder (root, prev);
+        return helper (root);
     }
 };
