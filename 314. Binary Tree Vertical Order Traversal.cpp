@@ -1,27 +1,30 @@
 /**
- * 一定要用BFS，不能用DFS，因为每个col的元素要求按顺序....
+ * O(n), O(n)
+ * root为空，左子树为空，右子树为空，某Vertical Level 有overlap，有间隔vertical level等等.
  */
 class Solution {
 public:
     vector<vector<int>> verticalOrder(TreeNode* root) {
-        map<int, vector<int>> myMap;
         vector<vector<int>> res;
-        queue<pair<TreeNode*, int>> q;
+        map<int, vector<int>> myMap;
         if (root == NULL)
             return res;
-        q.push ({root, 0});
+        queue<pair <TreeNode*, int>> q;
+        q.push({root, 0});
         while (q.empty() == false) {
-            TreeNode * p = q.front().first;
+            TreeNode * cur = q.front().first;
             int col = q.front().second;
+            myMap[col].push_back (cur->val);
             q.pop();
-            myMap[col].push_back (p->val);
-            if (p->left)
-                q.push({p->left, col - 1});
-            if (p->right)
-                q.push({p->right, col + 1});
+            if (cur->left) {
+                q.push({cur->left, col - 1});
+            }
+            if (cur->right) {
+                q.push({cur->right, col + 1});
+            }
         }
-        for (auto i: myMap) {
-            res.push_back(i.second);
+        for (map<int, vector<int>>::iterator i = myMap.begin(); i != myMap.end(); i++) {
+            res.push_back (i->second);
         }
         return res;
     }
