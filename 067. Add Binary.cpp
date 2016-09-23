@@ -1,15 +1,21 @@
+/**
+ * O(max (m, n)), O(max (m, n)).
+ * a 空，b空，ab空，ab等长，ab不等长
+ */
 class Solution {
 public:
     string addBinary(string a, string b) {
-        string s = "";
-        int i = a.size() - 1, j = b.size() - 1, c = 0;
-        while (c || i >= 0 || j >= 0) {
-            c += i >= 0? a[i] - '0' : 0;
-            c += j >= 0? b[j] - '0' : 0;
-            s = char (c % 2 + '0') + s;
-            c /= 2;
-            i--; j--;
+        int carry = 0;
+        string res = "";
+        reverse (a.begin(), a.end());
+        reverse (b.begin(), b.end());
+        for (int i = 0; i < a.size() || i < b.size() || carry; i++) {
+            carry += i < a.size()? a[i] - '0' : 0;
+            carry += i < b.size()? b[i] - '0' : 0;
+            res += to_string (carry % 2);
+            carry /= 2;
         }
-        return s;
+        reverse (res.begin(), res.end());
+        return res;
     }
 };
