@@ -1,3 +1,5 @@
+// O (m * logn)/ O (m * n), space: O (n)
+
 class Solution {
 public:
     int find (int i, vector<int>& nodes) {
