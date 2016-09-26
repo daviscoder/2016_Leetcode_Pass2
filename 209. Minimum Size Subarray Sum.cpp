@@ -1,23 +1,25 @@
+/**
+ * O (n), O(1).
+ */
 class Solution {
 public:
     int minSubArrayLen(int s, vector<int>& nums) {
-        if (nums.size() == 0)
+        if (nums.size() == 0 || s <= 0)
             return 0;
-        int l = 0, r = 0, res = INT_MAX, sum = nums[0];
-        while (r < nums.size()) {
-            if (l > r) {
-                return 1;
-            }
+        int sum = nums[0], start = 0, end = 0, length = INT_MAX;
+        while (end < nums.size()) {
+            cout << sum << endl;
             if (sum >= s) {
-                sum -= nums[l];
-                res = min (res, r - l + 1);
-                l++;
+                length = min (length, end - start + 1);
+                sum = sum - nums[start];
+                start++;
             }
-            else {
-                r++;
-                sum += nums[r];
+            else { // end++ 一定要写在 sum+= nums[end]之前，因为最后一个元素加完后end不会等于nums.size(). 给了下一个iteration进入if的机会
+                end++;
+                sum += nums[end];
             }
         }
-        return res == INT_MAX? 0 : res;
+        return length == INT_MAX? 0 : length;
     }
+};
 };
