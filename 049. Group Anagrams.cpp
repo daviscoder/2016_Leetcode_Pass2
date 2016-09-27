@@ -1,4 +1,5 @@
 /**
+ * O(n * len(strs) * log (len(strs))). O (n)
  * 先用一个hashmap保存 string到vector<int>的映射，iterage strs逐个添加.
  * 注意iterator的写法
  */
